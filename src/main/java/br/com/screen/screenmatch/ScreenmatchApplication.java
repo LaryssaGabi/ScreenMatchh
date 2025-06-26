@@ -1,5 +1,6 @@
 package br.com.screen.screenmatch;
 
+import br.com.screen.screenmatch.service.ConsumoAPI;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +14,8 @@ public class ScreenmatchApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("Peojeto sem o web");
+		ConsumoAPI consumoAPI = new ConsumoAPI();
+		var json = consumoAPI.obterDados("http://www.omdbapi.com/?i=tt3896198&apikey=8b5c1632");
+		System.out.println(json);
 	}
 }
