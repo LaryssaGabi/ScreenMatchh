@@ -1,5 +1,6 @@
 package br.com.screen.screenmatch;
 
+import br.com.screen.screenmatch.model.DadosEpisodio;
 import br.com.screen.screenmatch.model.DadosSerie;
 import br.com.screen.screenmatch.service.ConsumoAPI;
 import br.com.screen.screenmatch.service.ConverterDados;
@@ -25,5 +26,9 @@ public class ScreenmatchApplication implements CommandLineRunner {
 		ConverterDados conversor = new ConverterDados();
 		DadosSerie dados = conversor.obterDados(json, DadosSerie.class);
 		System.out.println(dados);
+
+		json = consumoAPI.obterDados("http://www.omdbapi.com/?i=tt3896198&apikey=8b5c1632");
+		DadosEpisodio dadosEpisodio = conversor.obterDados(json, DadosEpisodio.class);
+		System.out.println(dadosEpisodio);
 	}
 }
